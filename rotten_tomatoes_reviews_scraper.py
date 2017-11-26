@@ -15,8 +15,8 @@ s = requests.Session()
 
 # Iterate over the movies
 t0 = time()
-final_result = []
-for m in movies:
+#final_result = []
+for m in movies[51:]:
     # Get the movie url from the rotten tomatoes api
     r = s.get('https://www.rottentomatoes.com/api/private/v2.0/search', params={'q': m['movie_name']})
     search_result = r.json()['movies']
@@ -31,7 +31,7 @@ for m in movies:
 
     # Iterate through the reviews pages
     reviews = []
-    for p in range(min(11, pages)):
+    for p in range(min(20, pages)):
         r = s.get(url_reviews, params={'type': 'user', 'page': p})
         r.encoding = 'utf-8'
         tags = BeautifulSoup(r.text, 'lxml').select('.col-xs-16')
