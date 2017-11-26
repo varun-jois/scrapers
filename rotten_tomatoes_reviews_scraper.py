@@ -15,8 +15,8 @@ s = requests.Session()
 
 # Iterate over the movies
 t0 = time()
-#final_result = []
-for m in movies[51:]:
+final_result = []
+for m in movies:
     # Get the movie url from the rotten tomatoes api
     r = s.get('https://www.rottentomatoes.com/api/private/v2.0/search', params={'q': m['movie_name']})
     search_result = r.json()['movies']
